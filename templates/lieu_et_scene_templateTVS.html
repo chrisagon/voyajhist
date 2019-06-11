@@ -1,0 +1,11 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the lieu_et_scene_init() hook (in hooks/lieu_et_scene.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="lieu_et_scene-nom_du_lieu-<%%VALUE(id_lets)%%>" class="lieu_et_scene-nom_du_lieu"><%%VALUE(nom_du_lieu)%%></td>
+		<td id="lieu_et_scene-illustration-<%%VALUE(id_lets)%%>" class="lieu_et_scene-illustration"><img src="thumbnail.php?i=<%%VALUE(illustration)%%>&t=lieu_et_scene&f=illustration&v=tv" class="img-thumbnail"></td>
+		<td id="lieu_et_scene-description-<%%VALUE(id_lets)%%>" class="lieu_et_scene-description"><%%VALUE(description)%%></td>
+		<td id="lieu_et_scene-difficulte_nivo-<%%VALUE(id_lets)%%>" class="lieu_et_scene-difficulte_nivo"><%%VALUE(difficulte_nivo)%%></td>

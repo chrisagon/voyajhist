@@ -1,0 +1,9 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the connect_perso_seq_init() hook (in hooks/connect_perso_seq.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="connect_perso_seq-perso-<%%VALUE(id)%%>" class="connect_perso_seq-perso"><%%VALUE(perso)%%></td>
+		<td id="connect_perso_seq-seq-<%%VALUE(id)%%>" class="connect_perso_seq-seq"><%%VALUE(seq)%%></td>

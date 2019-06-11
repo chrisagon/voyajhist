@@ -1,0 +1,21 @@
+		<td colspan="5" class="row">
+			<div class="col-sm-12">
+				<dl class="dl-horizontal">
+					<dt class="redacteur-prenom-caption field-caption-tv">Prenom</dt>
+					<dd id="redacteur-prenom-<%%VALUE(id_redact)%%>" class="redacteur-prenom"><%%SELECT%%><%%VALUE(prenom)%%><%%ENDSELECT%%></dd>
+
+					<dt class="redacteur-nom-caption field-caption-tv">Nom</dt>
+					<dd id="redacteur-nom-<%%VALUE(id_redact)%%>" class="redacteur-nom"><%%SELECT%%><%%VALUE(nom)%%><%%ENDSELECT%%></dd>
+
+					<dt class="redacteur-email-caption field-caption-tv">Email</dt>
+					<dd id="redacteur-email-<%%VALUE(id_redact)%%>" class="redacteur-email"><a href="mailto:<%%VALUE(email)%%>" title="<%%VALUE(email)%%>" class="btn btn-default"><i class="glyphicon glyphicon-envelope text-info"></i></a></dd>
+
+					<dt class="redacteur-score_total-caption field-caption-tv">Score total</dt>
+					<dd id="redacteur-score_total-<%%VALUE(id_redact)%%>" class="redacteur-score_total text-right"><%%SELECT%%><%%VALUE(score_total)%%><%%ENDSELECT%%></dd>
+
+					<dt class="redacteur-badges-caption field-caption-tv">Badges</dt>
+					<dd id="redacteur-badges-<%%VALUE(id_redact)%%>" class="redacteur-badges"><%%SELECT%%><%%VALUE(badges)%%><%%ENDSELECT%%></dd>
+
+				</dl>
+			</div>
+		</td>

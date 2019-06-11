@@ -1,0 +1,10 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the Dossier_histoire_init() hook (in hooks/Dossier_histoire.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="Dossier_histoire-auteur-<%%VALUE(id2dossier)%%>" class="Dossier_histoire-auteur"><%%VALUE(auteur)%%></td>
+		<td id="Dossier_histoire-titre_histoire-<%%VALUE(id2dossier)%%>" class="Dossier_histoire-titre_histoire"><%%VALUE(titre_histoire)%%></td>
+		<td id="Dossier_histoire-resume-<%%VALUE(id2dossier)%%>" class="Dossier_histoire-resume"><%%VALUE(resume)%%></td>

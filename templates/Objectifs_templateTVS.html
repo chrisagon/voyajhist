@@ -1,0 +1,10 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the Objectifs_init() hook (in hooks/Objectifs.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="Objectifs-titreobj-<%%VALUE(id_objectif)%%>" class="Objectifs-titreobj"><%%VALUE(titreobj)%%></td>
+		<td id="Objectifs-description_obj-<%%VALUE(id_objectif)%%>" class="Objectifs-description_obj"><%%VALUE(description_obj)%%></td>
+		<td id="Objectifs-ref_o_gameplay-<%%VALUE(id_objectif)%%>" class="Objectifs-ref_o_gameplay"><%%VALUE(ref_o_gameplay)%%></td>

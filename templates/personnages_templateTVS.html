@@ -1,0 +1,12 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the personnages_init() hook (in hooks/personnages.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="personnages-nom-<%%VALUE(id_perso)%%>" class="personnages-nom"><%%VALUE(nom)%%></td>
+		<td id="personnages-type-<%%VALUE(id_perso)%%>" class="personnages-type"><%%VALUE(type)%%></td>
+		<td id="personnages-illustration-<%%VALUE(id_perso)%%>" class="personnages-illustration"><img src="thumbnail.php?i=<%%VALUE(illustration)%%>&t=personnages&f=illustration&v=tv" class="img-thumbnail"></td>
+		<td id="personnages-description-<%%VALUE(id_perso)%%>" class="personnages-description"><%%VALUE(description)%%></td>
+		<td id="personnages-quepossedetil-<%%VALUE(id_perso)%%>" class="personnages-quepossedetil"><%%VALUE(quepossedetil)%%></td>

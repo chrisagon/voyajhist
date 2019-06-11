@@ -1,0 +1,253 @@
+<!-- Edit this file to change the layout of the detail view form -->
+
+<a name="detail-view"></a>
+<div class="panel-heading"><h3 class="panel-title"><strong><%%DETAIL_VIEW_TITLE%%></strong></h3></div>
+
+<div class="panel-body" id="lieu_et_scene_dv_container">
+	<!-- child links -->
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<hr>
+
+	<div class="row">
+		<!-- form inputs -->
+		<div class="col-md-8 col-lg-10" id="lieu_et_scene_dv_form">
+			<fieldset class="form-horizontal">
+
+				<div class="form-group">
+					<label for="nom_du_lieu" class="control-label col-lg-3">Nom du lieu<span class="text-danger"><%%TRANSLATION(*)%%></span> <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#nom_du_lieu-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="nom_du_lieu-description"><div class="alert alert-info">nom du lieu &#224; d&#233;crire</div></span>
+
+						<textarea class="form-control" name="nom_du_lieu" id="nom_du_lieu" rows="5"><%%VALUE(nom_du_lieu)%%></textarea>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-lg-3">Illustration <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#illustration-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="illustration-description"><div class="alert alert-info">Maximum file size allowed: 100 KB.<br>Allowed file types: jpg, jpeg, gif, png</div></span>
+
+						<div class="form-control-static"><div class="pull-left">
+
+						<img src="thumbnail.php?i=<%%VALUE(illustration)%%>&t=lieu_et_scene&f=illustration&v=dv" class="img-thumbnail" id="illustration-image">
+</div>
+
+												<div class="pull-right" style="overflow-x: hidden;">
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(illustration)%%>
+							<%%REMOVEFILE(illustration)%%>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="description" class="control-label col-lg-3">Description</label>
+					<div class="col-lg-9">
+						<%%HTMLAREA(description)%%>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="difficulte_nivo" class="control-label col-lg-3">Difficulte nivo</label>
+					<div class="col-lg-9">
+						<%%COMBO(difficulte_nivo)%%>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="condition_entree" class="control-label col-lg-3">Condition entree</label>
+					<div class="col-lg-9">
+						<%%HTMLAREA(condition_entree)%%>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="condition_sortie" class="control-label col-lg-3">Condition sortie</label>
+					<div class="col-lg-9">
+						<%%HTMLAREA(condition_sortie)%%>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="objet_present" class="control-label col-lg-3" data-parent_link="view_parent_modal">Objet present <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#objet_present-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="objet_present-description"><div class="alert alert-info">Objet pr&#233;sent dans le d&#233;cor</div></span>
+
+						<div class="row form-control-static"><div class="col-xs-11"><%%COMBO(objet_present)%%><%%PLINK(objet_present)%%><%%ADDNEW(Objets)%%></div></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="persos_present" class="control-label col-lg-3" data-parent_link="view_parent_modal">Persos present</label>
+					<div class="col-lg-9">
+						<div class="row form-control-static"><div class="col-xs-11"><%%COMBO(persos_present)%%><%%PLINK(persos_present)%%><%%ADDNEW(personnages)%%></div></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="rattache_a_dos2j" class="control-label col-lg-3" data-parent_link="view_parent_modal">Rattache a dos2j</label>
+					<div class="col-lg-9">
+						<div class="row form-control-static"><div class="col-xs-11"><%%COMBO(rattache_a_dos2j)%%><%%PLINK(rattache_a_dos2j)%%><%%ADDNEW(Dossier_histoire)%%></div></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="rattache_a_seq" class="control-label col-lg-3" data-parent_link="view_parent_modal">Rattache a seq</label>
+					<div class="col-lg-9">
+						<div class="row form-control-static"><div class="col-xs-11"><%%COMBO(rattache_a_seq)%%><%%PLINK(rattache_a_seq)%%><%%ADDNEW(sequence)%%></div></div>
+					</div>
+				</div>
+
+			</fieldset>
+		</div>
+
+		<!-- DV action buttons -->
+		<div class="col-md-4 col-lg-2" id="lieu_et_scene_dv_action_buttons">
+			<div class="btn-toolbar">
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%UPDATE_BUTTON%%>
+				</div><p></p>
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%DESELECT_BUTTON%%>
+					<%%DVPRINT_BUTTON%%>
+					<%%DELETE_BUTTON%%>
+				</div><p></p>
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%INSERT_BUTTON%%>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div><!-- /div class="panel-body" -->
+	<script src="nicEdit.js"></script>
+	<script>
+		$j(function() {
+			var add_new_mode = (!$j('input[name=SelectedID]').val());
+			var embedded_mode = ($j('input[name=Embedded]').val() == 1);
+
+			/* auto-close embedded page? */
+			var autoclose_mode = ($j('input[name=AutoClose]').val() == 1);
+			var record_added_ok = (location.search.split('record-added-ok=').length == 2);
+			var record_updated_ok = (location.search.split('record-updated-ok=').length == 2);
+			if((record_added_ok || record_updated_ok) && embedded_mode && autoclose_mode){
+				setTimeout(function(){
+					window.parent.jQuery('.modal').modal('hide');
+				}, 2000);
+			}
+
+			bkLib.onDomLoaded(function(){
+				if($j('textarea#description').length) new nicEditor({ fullPanel : true }).panelInstance('description');
+				if($j('textarea#condition_entree').length) new nicEditor({ fullPanel : true }).panelInstance('condition_entree');
+				if($j('textarea#condition_sortie').length) new nicEditor({ fullPanel : true }).panelInstance('condition_sortie');
+
+				$j('.nicEdit-panelContain').parent().width('90%');
+				$j('.nicEdit-panelContain').parent().next().width('88%');
+				$j('.nicEdit-main').width('99%');
+			});
+			/* enable DV action buttons to float on scrolling down the form */
+			enable_dvab_floating();
+
+			$j('select, input[type=text], textarea').not(':disabled').eq(0).focus();
+			$j('form').eq(0).change(function(){
+				if($j(this).data('already_changed')) return;
+				if($j('#deselect').length) $j('#deselect').removeClass('btn-default').addClass('btn-warning').get(0).lastChild.data = " <%%TRANSLATION(Cancel)%%>";
+				$j(this).data('already_changed', true);
+			});
+
+			$j('a[href="<%%TRANSLATION(ImageFolder)%%>"]').click(function(){ return false; });
+
+
+			if(!embedded_mode){
+				/* add a horizontal spacer to [add new parent] buttons that don't have a spacered element before them */
+				$j('.add_new_parent').prev(':not(.hspacer-md)').next().addClass('hspacer-md');
+
+				$j('.add_new_parent').click(function(){
+					var pt = $j(this).attr('id').replace(/_add_new$/, '');
+					modal_window({
+						url: pt + '_view.php?addNew_x=1&Embedded=1',
+						close: function(){
+							var field_id = $j('#' + pt + '_add_new').prevAll('input:hidden').eq(0).attr('id');
+							$j('#' + field_id + '-container').select2('focus').select2('focus');
+						},
+						size: 'full',
+						title: $j(this).attr('title')
+					});
+				});
+			}
+
+			/* find and hide parent links if field label has data 'parent_link' set to 'view_parent_hidden' */
+			$j('label[data-parent_link=view_parent_hidden]').each(function(){
+				$j(this).parents('.form-group').find('.view_parent').hide();
+			});
+
+			$j('form').on('click', '.view_parent', function(){
+				var pt = $j(this).attr('id').replace(/_view_parent$/, '');
+				if($j(this).prevAll('input:hidden').length){
+					var parent_id = $j(this).prevAll('input:hidden').eq(0).val();
+				}else{
+					var parent_id = $j(this).prevAll().children('input:hidden').eq(0).val();
+				}
+
+				/* handle radio lookups */
+				if($j(this).prevAll('[type=radio]').length){
+					parent_id = $j(this).prevAll('[type=radio]').eq(0).val();
+				}
+
+				if(parent_id != '{empty_value}'){
+					var parent_link = $j(this).parents('.form-group').children('label').data('parent_link');
+					switch(parent_link){
+						case 'view_parent_hidden':
+							break;
+						case 'view_parent_modal':
+							modal_window({
+								url: pt + '_view.php?Embedded=1&SelectedID=' + encodeURIComponent(parent_id),
+								close: function(){
+									var field_id = $j('#' + pt + '_view_parent').prevAll('input:hidden').eq(0).attr('id');
+									$j('#' + field_id + '-container').select2('focus').select2('focus');
+								},
+								size: 'full',
+								title: $j(this).attr('title')
+							});
+							break;
+						case 'view_parent_same_window':
+							window.location = pt + '_view.php?Embedded=' + (embedded_mode ? '1' : '') + '&SelectedID=' + encodeURIComponent(parent_id);
+							break;
+						case 'view_parent_new_window':
+							window.open(pt + '_view.php?SelectedID=' + encodeURIComponent(parent_id));
+							break;
+					}
+
+				}
+			});
+
+
+			/* load admin tools for admin user */
+			if(!add_new_mode){
+				$j('body').append('<div id="admin-tools-appendix"></div>');
+				$j('#admin-tools-appendix').load(
+					'ajax_admin_tools.php?table=lieu_et_scene&id=<%%URLVALUE(id_lets)%%>',
+					function(resp){
+						if(!resp.length) return;
+						$j.ajax('ajax_admin_tools.php?action=get_admin_tools_js&table=lieu_et_scene&id=<%%URLVALUE(id_lets)%%>');
+					}
+				);
+			}
+
+			/* warn user if 'add new' clicked while unsaved changes exist */
+			$j('#addNew').click(function(){
+				if($j('#deselect.btn-warning').length){
+					return confirm('<%%TRANSLATION(discard changes confirm)%%>');
+				}
+			});
+
+		});
+	</script>

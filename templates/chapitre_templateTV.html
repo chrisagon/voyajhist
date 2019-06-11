@@ -1,0 +1,12 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the chapitre_init() hook (in hooks/chapitre.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="chapitre-titre-<%%VALUE(id)%%>" class="chapitre-titre"><%%SELECT%%><%%VALUE(titre)%%><%%ENDSELECT%%></td>
+		<td id="chapitre-Mission-<%%VALUE(id)%%>" class="chapitre-Mission"><%%SELECT%%><%%VALUE(Mission)%%><%%ENDSELECT%%></td>
+		<td id="chapitre-resume-<%%VALUE(id)%%>" class="chapitre-resume"><%%SELECT%%><%%VALUE(resume)%%><%%ENDSELECT%%></td>
+		<td id="chapitre-rattache_a_dossier-<%%VALUE(id)%%>" class="chapitre-rattache_a_dossier"><%%SELECT%%><%%VALUE(rattache_a_dossier)%%><%%ENDSELECT%%></td>
+		<td id="chapitre-auteur-<%%VALUE(id)%%>" class="chapitre-auteur"><%%SELECT%%><%%VALUE(auteur)%%><%%ENDSELECT%%></td>

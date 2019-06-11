@@ -1,0 +1,33 @@
+﻿id_seqref;titre;description;typologie;num_ord
+1;Eloignement;L’un des membres de la famille s’éloigne de la maison;Situation;1
+2;Interdiction;Le héros se fait signifier une interdiction ou un ordre;Situation;2
+3;Transgression;L’interdiction/l’ordre est transgressé;Situation;3
+4;Interrogation;L’agresseur essaye d’obtenir des renseignements;Situation;4
+5;Information;L’agresseur reçoit des informations sur sa victime;Situation;5
+6;Tromperie;L’agresseur tente de tromper sa victime pour s’emparer d’elle ou de ses biens;Situation;6
+7;Complicité;La victime se laisse tromper et aide ainsi son ennemi malgré elle;Situation;7
+8;Méfait.;L’agresseur nuit à l’un des membres de la famille ou lui porte préjudice.;Problème;8
+9;Manque;"Il manque quelque chose à l’un des membres de la famille ; l’un des membres de la famille a envie de posséder quelque chose";Problème;9
+10;Médiation, moment de liaison;La nouvelle du méfait ou du manque est divulguée, on s’adresse au héros par une demande ou un ordre, on l’envoie ou on le laisse partir.;Problème;10
+11;Début de l’opposition à l’agresseur;Le héros-quêteur accepte ou décide d’agir;Problème;11
+12;Départ du héros;Le héros quitte sa demeure;Problème;12
+13;Première fonction du donateur;Le héros subit une épreuve, un questionnaire, une attaque, etc., qui le préparent à la réception d’un objet ou d’un auxiliaire magique;Résolution;13
+14;Réaction du héros;Il réagit aux actions du futur donateur.;Résolution;14
+15;Objet magique;Un objet magique est mis à la disposition du héros;Résolution;15
+16;Transfert jusqu’au lieu fixé;Le héros est transporté, conduit ou amené près du lieu où se trouve l’objet de sa quête, avec un guide;Résolution;16
+17;Combat;Le héros et son agresseur s’affrontent;Résolution;17
+18;Marque;Le héros reçoit une marque.;Résolution;18
+19;Victoire;L’agresseur est vaincu;Résolution;19
+20;Réparation;Le méfait initial est réparé ou le manque comblé.;Résolution;20
+21;Retour du héros;Retour du héros;Résolution;21
+22;Poursuite;Le héros est poursuivi.;Information;22
+23;Secours;Le héros est secouru;Information;23
+24;Arrivée incognito;Le héros arrive incognito chez lui ou dans une autre contrée.;Information;24
+25;Prétentions mensongères.;Un faux héros fait valoir des prétentions mensongères.;Information;25
+26;Tâche difficile;On propose au héros une tâche difficile;Information;26
+27;La tâche est accomplie;La tâche est accomplie;Information;27
+28;Reconnaissance;Le héros est reconnu grâce à la marque obtenue lors de son affrontement précédent.;Information;28
+29;Découverte;Le faux héros ou l’agresseur, le méchant, est démasqué.;Information;29
+30;Transfiguration;Le héros reçoit une nouvelle apparence;Information;30
+31;Punition;Châtiment du faux héros ou de l’agresseur;Information;31
+32;Mariage;Le héros se marie et monte sur le trône.;Information;32

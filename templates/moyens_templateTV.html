@@ -1,0 +1,10 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the moyens_init() hook (in hooks/moyens.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="moyens-titremoy-<%%VALUE(id_moyen)%%>" class="moyens-titremoy"><%%SELECT%%><%%VALUE(titremoy)%%><%%ENDSELECT%%></td>
+		<td id="moyens-description_moy-<%%VALUE(id_moyen)%%>" class="moyens-description_moy"><%%SELECT%%><%%VALUE(description_moy)%%><%%ENDSELECT%%></td>
+		<td id="moyens-ref_o_gameplay-<%%VALUE(id_moyen)%%>" class="moyens-ref_o_gameplay"><%%SELECT%%><%%VALUE(ref_o_gameplay)%%><%%ENDSELECT%%></td>

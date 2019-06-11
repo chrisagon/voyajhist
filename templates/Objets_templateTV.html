@@ -1,0 +1,11 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the Objets_init() hook (in hooks/Objets.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="Objets-nom_objet-<%%VALUE(id_objet)%%>" class="Objets-nom_objet"><%%SELECT%%><%%VALUE(nom_objet)%%><%%ENDSELECT%%></td>
+		<td id="Objets-illustration-<%%VALUE(id_objet)%%>" class="Objets-illustration"><%%SELECT%%><img src="thumbnail.php?i=<%%VALUE(illustration)%%>&t=Objets&f=illustration&v=tv" class="img-thumbnail"><%%ENDSELECT%%></td>
+		<td id="Objets-typologie-<%%VALUE(id_objet)%%>" class="Objets-typologie"><%%SELECT%%><%%VALUE(typologie)%%><%%ENDSELECT%%></td>
+		<td id="Objets-Aquoisertil-<%%VALUE(id_objet)%%>" class="Objets-Aquoisertil"><%%SELECT%%><%%VALUE(Aquoisertil)%%><%%ENDSELECT%%></td>

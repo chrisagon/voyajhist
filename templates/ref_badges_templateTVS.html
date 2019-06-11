@@ -1,0 +1,13 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the ref_badges_init() hook (in hooks/ref_badges.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="ref_badges-titre-<%%VALUE(id_badge)%%>" class="ref_badges-titre"><%%VALUE(titre)%%></td>
+		<td id="ref_badges-description-<%%VALUE(id_badge)%%>" class="ref_badges-description"><%%VALUE(description)%%></td>
+		<td id="ref_badges-domaine-<%%VALUE(id_badge)%%>" class="ref_badges-domaine"><%%VALUE(domaine)%%></td>
+		<td id="ref_badges-score_min-<%%VALUE(id_badge)%%>" class="ref_badges-score_min text-right"><%%VALUE(score_min)%%></td>
+		<td id="ref_badges-score_max-<%%VALUE(id_badge)%%>" class="ref_badges-score_max"><%%VALUE(score_max)%%></td>
+		<td id="ref_badges-icone_badge-<%%VALUE(id_badge)%%>" class="ref_badges-icone_badge"><%%VALUE(icone_badge)%%></td>

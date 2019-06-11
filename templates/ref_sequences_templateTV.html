@@ -1,0 +1,11 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the ref_sequences_init() hook (in hooks/ref_sequences.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="ref_sequences-titre-<%%VALUE(id_seqref)%%>" class="ref_sequences-titre"><%%SELECT%%><%%VALUE(titre)%%><%%ENDSELECT%%></td>
+		<td id="ref_sequences-description-<%%VALUE(id_seqref)%%>" class="ref_sequences-description"><%%SELECT%%><%%VALUE(description)%%><%%ENDSELECT%%></td>
+		<td id="ref_sequences-typologie-<%%VALUE(id_seqref)%%>" class="ref_sequences-typologie"><%%SELECT%%><%%VALUE(typologie)%%><%%ENDSELECT%%></td>
+		<td id="ref_sequences-num_ord-<%%VALUE(id_seqref)%%>" class="ref_sequences-num_ord"><%%SELECT%%><%%VALUE(num_ord)%%><%%ENDSELECT%%></td>
