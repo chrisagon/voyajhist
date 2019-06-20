@@ -1,10 +1,14 @@
+<?php
+	$rdata = array_map('to_utf8', array_map('nl2br', array_map('html_attr_tags_ok', $rdata)));
+	$jdata = array_map('to_utf8', array_map('nl2br', array_map('html_attr_tags_ok', $jdata)));
+?>
 <script>
 	$j(function(){
 		var tn = 'Dossier_histoire';
 
 		/* data for selected record, or defaults if none is selected */
 		var data = {
-			auteur: { id: '<?php echo $rdata['auteur']; ?>', value: '<?php echo $rdata['auteur']; ?>', text: '<?php echo $jdata['auteur']; ?>' }
+			auteur: <?php echo json_encode(array('id' => $rdata['auteur'], 'value' => $rdata['auteur'], 'text' => $jdata['auteur'])); ?>
 		};
 
 		/* initialize or continue using AppGini.cache for the current table */

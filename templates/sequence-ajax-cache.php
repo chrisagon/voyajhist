@@ -1,11 +1,15 @@
+<?php
+	$rdata = array_map('to_utf8', array_map('nl2br', array_map('html_attr_tags_ok', $rdata)));
+	$jdata = array_map('to_utf8', array_map('nl2br', array_map('html_attr_tags_ok', $jdata)));
+?>
 <script>
 	$j(function(){
 		var tn = 'sequence';
 
 		/* data for selected record, or defaults if none is selected */
 		var data = {
-			rattache_a_chapitre: { id: '<?php echo $rdata['rattache_a_chapitre']; ?>', value: '<?php echo $rdata['rattache_a_chapitre']; ?>', text: '<?php echo $jdata['rattache_a_chapitre']; ?>' },
-			modele: { id: '<?php echo $rdata['modele']; ?>', value: '<?php echo $rdata['modele']; ?>', text: '<?php echo $jdata['modele']; ?>' }
+			rattache_a_chapitre: <?php echo json_encode(array('id' => $rdata['rattache_a_chapitre'], 'value' => $rdata['rattache_a_chapitre'], 'text' => $jdata['rattache_a_chapitre'])); ?>,
+			modele: <?php echo json_encode(array('id' => $rdata['modele'], 'value' => $rdata['modele'], 'text' => $jdata['modele'])); ?>
 		};
 
 		/* initialize or continue using AppGini.cache for the current table */

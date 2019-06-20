@@ -5,12 +5,12 @@
 
 <div class="panel-body" id="lieu_et_scene_dv_container">
 	<!-- child links -->
-	<div class="row">
+	<div class="row vspacer-md">
 		<div class="col-xs-12">
 			<div class="clearfix"></div>
 		</div>
 	</div>
-	<hr>
+	<hr class="hidden-xs hidden-sm">
 
 	<div class="row">
 		<!-- form inputs -->
@@ -18,6 +18,7 @@
 			<fieldset class="form-horizontal">
 
 				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
 					<label for="nom_du_lieu" class="control-label col-lg-3">Nom du lieu<span class="text-danger"><%%TRANSLATION(*)%%></span> <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#nom_du_lieu-description"></i></label>
 					<div class="col-lg-9">
 						<span class="help-block collapse" id="nom_du_lieu-description"><div class="alert alert-info">nom du lieu &#224; d&#233;crire</div></span>
@@ -27,6 +28,7 @@
 				</div>
 
 				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
 					<label class="control-label col-lg-3">Illustration <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#illustration-description"></i></label>
 					<div class="col-lg-9">
 						<span class="help-block collapse" id="illustration-description"><div class="alert alert-info">Maximum file size allowed: 100 KB.<br>Allowed file types: jpg, jpeg, gif, png</div></span>
@@ -48,6 +50,7 @@
 				</div>
 
 				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
 					<label for="description" class="control-label col-lg-3">Description</label>
 					<div class="col-lg-9">
 						<%%HTMLAREA(description)%%>
@@ -55,6 +58,7 @@
 				</div>
 
 				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
 					<label for="difficulte_nivo" class="control-label col-lg-3">Difficulte nivo</label>
 					<div class="col-lg-9">
 						<%%COMBO(difficulte_nivo)%%>
@@ -62,6 +66,7 @@
 				</div>
 
 				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
 					<label for="condition_entree" class="control-label col-lg-3">Condition entree</label>
 					<div class="col-lg-9">
 						<%%HTMLAREA(condition_entree)%%>
@@ -69,6 +74,7 @@
 				</div>
 
 				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
 					<label for="condition_sortie" class="control-label col-lg-3">Condition sortie</label>
 					<div class="col-lg-9">
 						<%%HTMLAREA(condition_sortie)%%>
@@ -76,32 +82,36 @@
 				</div>
 
 				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
 					<label for="objet_present" class="control-label col-lg-3" data-parent_link="view_parent_modal">Objet present <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#objet_present-description"></i></label>
 					<div class="col-lg-9">
 						<span class="help-block collapse" id="objet_present-description"><div class="alert alert-info">Objet pr&#233;sent dans le d&#233;cor</div></span>
 
-						<div class="row form-control-static"><div class="col-xs-11"><%%COMBO(objet_present)%%><%%PLINK(objet_present)%%><%%ADDNEW(Objets)%%></div></div>
+						<div class="form-control-static" style="white-space: nowrap; overflow-x: hidden;"><%%COMBO(objet_present)%%><%%PLINK(objet_present)%%><%%ADDNEW(Objets)%%></div>
 					</div>
 				</div>
 
 				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
 					<label for="persos_present" class="control-label col-lg-3" data-parent_link="view_parent_modal">Persos present</label>
 					<div class="col-lg-9">
-						<div class="row form-control-static"><div class="col-xs-11"><%%COMBO(persos_present)%%><%%PLINK(persos_present)%%><%%ADDNEW(personnages)%%></div></div>
+						<div class="form-control-static" style="white-space: nowrap; overflow-x: hidden;"><%%COMBO(persos_present)%%><%%PLINK(persos_present)%%><%%ADDNEW(personnages)%%></div>
 					</div>
 				</div>
 
 				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
 					<label for="rattache_a_dos2j" class="control-label col-lg-3" data-parent_link="view_parent_modal">Rattache a dos2j</label>
 					<div class="col-lg-9">
-						<div class="row form-control-static"><div class="col-xs-11"><%%COMBO(rattache_a_dos2j)%%><%%PLINK(rattache_a_dos2j)%%><%%ADDNEW(Dossier_histoire)%%></div></div>
+						<div class="form-control-static" style="white-space: nowrap; overflow-x: hidden;"><%%COMBO(rattache_a_dos2j)%%><%%PLINK(rattache_a_dos2j)%%><%%ADDNEW(Dossier_histoire)%%></div>
 					</div>
 				</div>
 
 				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
 					<label for="rattache_a_seq" class="control-label col-lg-3" data-parent_link="view_parent_modal">Rattache a seq</label>
 					<div class="col-lg-9">
-						<div class="row form-control-static"><div class="col-xs-11"><%%COMBO(rattache_a_seq)%%><%%PLINK(rattache_a_seq)%%><%%ADDNEW(sequence)%%></div></div>
+						<div class="form-control-static" style="white-space: nowrap; overflow-x: hidden;"><%%COMBO(rattache_a_seq)%%><%%PLINK(rattache_a_seq)%%><%%ADDNEW(sequence)%%></div>
 					</div>
 				</div>
 
@@ -109,6 +119,7 @@
 		</div>
 
 		<!-- DV action buttons -->
+		<hr class="hidden-md hidden-lg">
 		<div class="col-md-4 col-lg-2" id="lieu_et_scene_dv_action_buttons">
 			<div class="btn-toolbar">
 				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
@@ -139,9 +150,7 @@
 			var record_added_ok = (location.search.split('record-added-ok=').length == 2);
 			var record_updated_ok = (location.search.split('record-updated-ok=').length == 2);
 			if((record_added_ok || record_updated_ok) && embedded_mode && autoclose_mode){
-				setTimeout(function(){
-					window.parent.jQuery('.modal').modal('hide');
-				}, 2000);
+				setTimeout(AppGini.closeParentModal, 2000);
 			}
 
 			bkLib.onDomLoaded(function(){
@@ -149,21 +158,24 @@
 				if($j('textarea#condition_entree').length) new nicEditor({ fullPanel : true }).panelInstance('condition_entree');
 				if($j('textarea#condition_sortie').length) new nicEditor({ fullPanel : true }).panelInstance('condition_sortie');
 
-				$j('.nicEdit-panelContain').parent().width('90%');
-				$j('.nicEdit-panelContain').parent().next().width('88%');
+				$j('.nicEdit-panelContain').parent().width('100%');
+				$j('.nicEdit-panelContain').parent().next().width('98%');
 				$j('.nicEdit-main').width('99%');
 			});
 			/* enable DV action buttons to float on scrolling down the form */
 			enable_dvab_floating();
 
-			$j('select, input[type=text], textarea').not(':disabled').eq(0).focus();
+			if(!(embedded_mode && AppGini.mobileDevice())){
+				$j('select, input[type=text], textarea').not(':disabled').eq(0).focus();
+			}
+
 			$j('form').eq(0).change(function(){
 				if($j(this).data('already_changed')) return;
 				if($j('#deselect').length) $j('#deselect').removeClass('btn-default').addClass('btn-warning').get(0).lastChild.data = " <%%TRANSLATION(Cancel)%%>";
 				$j(this).data('already_changed', true);
 			});
 
-			$j('a[href="<%%TRANSLATION(ImageFolder)%%>"]').click(function(){ return false; });
+			$j('a[href="<%%TRANSLATION(ImageFolder)%%>"]').click(function(){ /* */ return false; });
 
 
 			if(!embedded_mode){
@@ -177,6 +189,20 @@
 						close: function(){
 							var field_id = $j('#' + pt + '_add_new').prevAll('input:hidden').eq(0).attr('id');
 							$j('#' + field_id + '-container').select2('focus').select2('focus');
+
+							/* if a new parent was added, select it */
+							var new_id = localStorage.getItem(pt + '_last_added_id');
+							if(new_id === null) return;
+
+							localStorage.clear(pt + '_last_added_id');
+							AppGini.lookupText({
+								id: new_id,
+								table: 'lieu_et_scene',
+								field: field_id,
+								callback: function(data) {
+									$j('#' + field_id + '-container').select2('data', data, true);
+								}
+							});
 						},
 						size: 'full',
 						title: $j(this).attr('title')
@@ -184,10 +210,7 @@
 				});
 			}
 
-			/* find and hide parent links if field label has data 'parent_link' set to 'view_parent_hidden' */
-			$j('label[data-parent_link=view_parent_hidden]').each(function(){
-				$j(this).parents('.form-group').find('.view_parent').hide();
-			});
+			AppGini.hideViewParentLinks();
 
 			$j('form').on('click', '.view_parent', function(){
 				var pt = $j(this).attr('id').replace(/_view_parent$/, '');
@@ -202,7 +225,7 @@
 					parent_id = $j(this).prevAll('[type=radio]').eq(0).val();
 				}
 
-				if(parent_id != '{empty_value}'){
+				if(parent_id != '{empty_value}' && parent_id != undefined && parent_id != ''){
 					var parent_link = $j(this).parents('.form-group').children('label').data('parent_link');
 					switch(parent_link){
 						case 'view_parent_hidden':

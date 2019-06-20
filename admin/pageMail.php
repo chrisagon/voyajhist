@@ -18,6 +18,7 @@
 	$memberID = new Request('memberID', 'strtolower');
 	$groupID = intval($_REQUEST['groupID']);
 	$sendToAll = intval($_REQUEST['sendToAll']);
+	$showDebug = $_REQUEST['showDebug'] ? true : false;
 
 	$isGroup = ($memberID->raw != '' ? false : true);
 
@@ -103,6 +104,10 @@
 		fwrite($fp, '?' . '>');
 		fclose($fp);
 
+		// showDebug checked? save to session (for use in pageSender.php, then will be reset)
+		$_SESSION["debug_{$queueFile}"] = false;
+		if($showDebug) $_SESSION["debug_{$queueFile}"] = true;
+
 		// redirect to mail queue processor
 		$simulate = isset($_REQUEST['simulate']) ? '&simulate=1' : '';
 		redirect("admin/pageSender.php?queue={$queueFile}{$simulate}");
@@ -136,9 +141,9 @@
 			<p class="form-control-static">
 				<?php echo "{$adminConfig['senderName']} &lt;{$adminConfig['senderEmail']}&gt;"; ?>
 				<div>
-					<a href="pageSettings.php" class="btn btn-default">
+					<a href="pageSettings.php#mail-settings" class="btn btn-default">
 						<i class="glyphicon glyphicon-pencil"></i>
-						<?php echo $Translation["change setting"]; ?>
+						<?php echo $Translation['configure mail settings']; ?>
 					</a>
 				</div>
 			</p>
@@ -181,6 +186,18 @@
 			<textarea rows="10" class="form-control" name="mailMessage" id="mailMessage"></textarea>
 		</div>
 	</div>
+
+	<?php if($adminConfig['mail_function'] == 'smtp'){ ?>
+		<div class="checkbox">
+			<div class="col-sm-offset-4 col-md-offset-3 col-lg-offset-4 col-sm-8 col-md-9 col-lg-6">
+				<label for="showDebug">
+					<input type="checkbox" name="showDebug" value="1" id="showDebug">
+					<?php echo $Translation['display debugging info']; ?>
+					<span class="help-block"><?php echo $Translation['debugging info hint']; ?></span>
+				</label>
+			</div>
+		</div>
+	<?php } ?>
 
 	<div class="form-group">
 		<div class="col-sm-4 col-sm-offset-4 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">

@@ -5,7 +5,7 @@
 
 <div class="panel-body" id="ref_badges_dv_container">
 	<!-- child links -->
-	<div class="row">
+	<div class="row vspacer-md">
 		<div class="col-xs-12">
 			<a class="hidden-xs btn btn-default btn-lg pull-right hidden hspacer-sm" href="redacteur_view.php?filterer_badges=<%%URLVALUE(id_badge)%%>&<%%EMBEDDED%%>" id="redacteur_link"><i class="glyphicon glyphicon-list-alt"></i> Passeport R&#233;dacteur</a>
 			<a class="visible-xs btn btn-default btn-lg btn-block hidden vspacer-sm" href="redacteur_view.php?filterer_badges=<%%URLVALUE(id_badge)%%>&<%%EMBEDDED%%>" id="xs_redacteur_link"><i class="glyphicon glyphicon-list-alt"></i> Passeport R&#233;dacteur</a>
@@ -13,7 +13,7 @@
 			<div class="clearfix"></div>
 		</div>
 	</div>
-	<hr>
+	<hr class="hidden-xs hidden-sm">
 
 	<div class="row">
 		<!-- form inputs -->
@@ -21,6 +21,7 @@
 			<fieldset class="form-horizontal">
 
 				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
 					<label for="titre" class="control-label col-lg-3">Titre<span class="text-danger"><%%TRANSLATION(*)%%></span></label>
 					<div class="col-lg-9">
 						<input maxlength="40" type="text" class="form-control" name="titre" id="titre" value="<%%VALUE(titre)%%>" required>
@@ -28,6 +29,7 @@
 				</div>
 
 				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
 					<label for="description" class="control-label col-lg-3">Description <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#description-description"></i></label>
 					<div class="col-lg-9">
 						<span class="help-block collapse" id="description-description"><div class="alert alert-info">Que faut-il faire pour obtenir ce badge ?</div></span>
@@ -37,6 +39,7 @@
 				</div>
 
 				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
 					<label for="domaine" class="control-label col-lg-3">Domaine <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#domaine-description"></i></label>
 					<div class="col-lg-9">
 						<span class="help-block collapse" id="domaine-description"><div class="alert alert-info">Quel est le domaine d'application du badge</div></span>
@@ -46,6 +49,7 @@
 				</div>
 
 				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
 					<label for="score_min" class="control-label col-lg-3">Score min <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#score_min-description"></i></label>
 					<div class="col-lg-9">
 						<span class="help-block collapse" id="score_min-description"><div class="alert alert-info">Score minimum pour obtenir ce badge</div></span>
@@ -55,6 +59,7 @@
 				</div>
 
 				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
 					<label for="score_max" class="control-label col-lg-3">Score max <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#score_max-description"></i></label>
 					<div class="col-lg-9">
 						<span class="help-block collapse" id="score_max-description"><div class="alert alert-info">Score maximum pour obtenir ce badge</div></span>
@@ -64,6 +69,7 @@
 				</div>
 
 				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
 					<label for="icone_badge" class="control-label col-lg-3">Icone badge</label>
 					<div class="col-lg-9">
 						<input maxlength="40" type="text" class="form-control" name="icone_badge" id="icone_badge" value="<%%VALUE(icone_badge)%%>">
@@ -74,6 +80,7 @@
 		</div>
 
 		<!-- DV action buttons -->
+		<hr class="hidden-md hidden-lg">
 		<div class="col-md-4 col-lg-2" id="ref_badges_dv_action_buttons">
 			<div class="btn-toolbar">
 				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
@@ -112,29 +119,30 @@
 			var record_added_ok = (location.search.split('record-added-ok=').length == 2);
 			var record_updated_ok = (location.search.split('record-updated-ok=').length == 2);
 			if((record_added_ok || record_updated_ok) && embedded_mode && autoclose_mode){
-				setTimeout(function(){
-					window.parent.jQuery('.modal').modal('hide');
-				}, 2000);
+				setTimeout(AppGini.closeParentModal, 2000);
 			}
 
 			bkLib.onDomLoaded(function(){
 				if($j('textarea#description').length) new nicEditor({ fullPanel : true }).panelInstance('description');
 
-				$j('.nicEdit-panelContain').parent().width('90%');
-				$j('.nicEdit-panelContain').parent().next().width('88%');
+				$j('.nicEdit-panelContain').parent().width('100%');
+				$j('.nicEdit-panelContain').parent().next().width('98%');
 				$j('.nicEdit-main').width('99%');
 			});
 			/* enable DV action buttons to float on scrolling down the form */
 			enable_dvab_floating();
 
-			$j('select, input[type=text], textarea').not(':disabled').eq(0).focus();
+			if(!(embedded_mode && AppGini.mobileDevice())){
+				$j('select, input[type=text], textarea').not(':disabled').eq(0).focus();
+			}
+
 			$j('form').eq(0).change(function(){
 				if($j(this).data('already_changed')) return;
 				if($j('#deselect').length) $j('#deselect').removeClass('btn-default').addClass('btn-warning').get(0).lastChild.data = " <%%TRANSLATION(Cancel)%%>";
 				$j(this).data('already_changed', true);
 			});
 
-			$j('a[href="<%%TRANSLATION(ImageFolder)%%>"]').click(function(){ return false; });
+			$j('a[href="<%%TRANSLATION(ImageFolder)%%>"]').click(function(){ /* */ return false; });
 
 			if(embedded_mode){
 				/* hide links to children tables in embedded mode */
@@ -142,7 +150,7 @@
 
 				/* append embedded mode to all links */
 				var append_embedded = function(){
-					$j('a[href]:not([href^=#]):not([href^=javascript]):not([href$="Embedded=1"]):not([href*="link.php?t="]):not([href^="mailto:"])').each(
+					$j('a[href]:not([href^="#"]):not([href^="javascript"]):not([href$="Embedded=1"]):not([href*="link.php?t="]):not([href^="mailto:"])').each(
 						function(){
 							$j(this).attr('href', $j(this).attr('href') + '&Embedded=1');
 						}
@@ -180,6 +188,20 @@
 						close: function(){
 							var field_id = $j('#' + pt + '_add_new').prevAll('input:hidden').eq(0).attr('id');
 							$j('#' + field_id + '-container').select2('focus').select2('focus');
+
+							/* if a new parent was added, select it */
+							var new_id = localStorage.getItem(pt + '_last_added_id');
+							if(new_id === null) return;
+
+							localStorage.clear(pt + '_last_added_id');
+							AppGini.lookupText({
+								id: new_id,
+								table: 'ref_badges',
+								field: field_id,
+								callback: function(data) {
+									$j('#' + field_id + '-container').select2('data', data, true);
+								}
+							});
 						},
 						size: 'full',
 						title: $j(this).attr('title')
@@ -187,10 +209,7 @@
 				});
 			}
 
-			/* find and hide parent links if field label has data 'parent_link' set to 'view_parent_hidden' */
-			$j('label[data-parent_link=view_parent_hidden]').each(function(){
-				$j(this).parents('.form-group').find('.view_parent').hide();
-			});
+			AppGini.hideViewParentLinks();
 
 			$j('form').on('click', '.view_parent', function(){
 				var pt = $j(this).attr('id').replace(/_view_parent$/, '');
@@ -205,7 +224,7 @@
 					parent_id = $j(this).prevAll('[type=radio]').eq(0).val();
 				}
 
-				if(parent_id != '{empty_value}'){
+				if(parent_id != '{empty_value}' && parent_id != undefined && parent_id != ''){
 					var parent_link = $j(this).parents('.form-group').children('label').data('parent_link');
 					switch(parent_link){
 						case 'view_parent_hidden':

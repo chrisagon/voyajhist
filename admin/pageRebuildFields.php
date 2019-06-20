@@ -4,148 +4,156 @@
 	$GLOBALS['page_title'] = $Translation['view or rebuild fields'];
 	include("{$currDir}/incHeader.php");
 
+	/*
+		$schema: [ tablename => [ fieldname => [ appgini => '...', 'db' => '...'], ... ], ... ]
+	*/
+
 	/* application schema as created in AppGini */
 	$schema = array(   
 		'redacteur' => array(   
 			'id_redact' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
-			'member_id' => array('appgini' => 'VARCHAR(40) unique '),
-			'prenom' => array('appgini' => 'VARCHAR(40) '),
-			'nom' => array('appgini' => 'VARCHAR(40) '),
-			'email' => array('appgini' => 'VARCHAR(80) '),
-			'score_total' => array('appgini' => 'DECIMAL(6,2) default \'0\' '),
-			'badges' => array('appgini' => 'INT unsigned '),
-			'score_hist' => array('appgini' => 'DECIMAL(10,2) default \'0\' '),
-			'score_obj' => array('appgini' => 'DECIMAL(10,2) default \'0\' '),
-			'score_moy' => array('appgini' => 'DECIMAL(10,2) default \'0\' '),
-			'score_objets' => array('appgini' => 'DECIMAL(10,2) default \'0\' '),
-			'score_perso' => array('appgini' => 'DECIMAL(10,2) default \'0\' '),
-			'score_lets' => array('appgini' => 'DECIMAL(10,2) default \'0\' ')
+			'member_id' => array('appgini' => 'VARCHAR(40) null unique '),
+			'prenom' => array('appgini' => 'VARCHAR(40) null '),
+			'nom' => array('appgini' => 'VARCHAR(40) null '),
+			'email' => array('appgini' => 'VARCHAR(80) null '),
+			'score_total' => array('appgini' => 'DECIMAL(6,2) null default \'0\' '),
+			'badges' => array('appgini' => 'INT unsigned null '),
+			'score_hist' => array('appgini' => 'DECIMAL(10,2) null default \'0\' '),
+			'score_obj' => array('appgini' => 'DECIMAL(10,2) null default \'0\' '),
+			'score_moy' => array('appgini' => 'DECIMAL(10,2) null default \'0\' '),
+			'score_objets' => array('appgini' => 'DECIMAL(10,2) null default \'0\' '),
+			'score_perso' => array('appgini' => 'DECIMAL(10,2) null default \'0\' '),
+			'score_lets' => array('appgini' => 'DECIMAL(10,2) null default \'0\' ')
 		),
 		'Dossier_histoire' => array(   
 			'id2dossier' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
-			'auteur' => array('appgini' => 'INT unsigned '),
+			'auteur' => array('appgini' => 'INT unsigned null '),
 			'titre_histoire' => array('appgini' => 'VARCHAR(40) not null '),
 			'resume' => array('appgini' => 'TEXT not null '),
-			'creer_par' => array('appgini' => 'VARCHAR(40) ')
+			'creer_par' => array('appgini' => 'VARCHAR(40) null ')
 		),
 		'chapitre' => array(   
 			'id' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
 			'titre' => array('appgini' => 'VARCHAR(40) not null '),
-			'Mission' => array('appgini' => 'INT unsigned '),
-			'resume' => array('appgini' => 'TEXT '),
-			'rattache_a_dossier' => array('appgini' => 'INT unsigned '),
-			'auteur' => array('appgini' => 'VARCHAR(40) ')
+			'Mission' => array('appgini' => 'INT unsigned null '),
+			'resume' => array('appgini' => 'TEXT null '),
+			'rattache_a_dossier' => array('appgini' => 'INT unsigned null '),
+			'auteur' => array('appgini' => 'VARCHAR(40) null ')
 		),
 		'sequence' => array(   
 			'id_sequence' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
 			'numero_ordre' => array('appgini' => 'INT not null '),
 			'titre' => array('appgini' => 'VARCHAR(40) not null '),
-			'rattache_a_chapitre' => array('appgini' => 'INT unsigned '),
-			'difficulte' => array('appgini' => 'VARCHAR(40) '),
-			'description' => array('appgini' => 'TEXT '),
-			'auteur' => array('appgini' => 'VARCHAR(40) '),
-			'modele' => array('appgini' => 'INT unsigned ')
+			'rattache_a_chapitre' => array('appgini' => 'INT unsigned null '),
+			'difficulte' => array('appgini' => 'VARCHAR(40) null '),
+			'description' => array('appgini' => 'TEXT null '),
+			'auteur' => array('appgini' => 'VARCHAR(40) null '),
+			'modele' => array('appgini' => 'INT unsigned null ')
 		),
 		'Objectifs' => array(   
 			'id_objectif' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
 			'titreobj' => array('appgini' => 'TEXT not null '),
-			'description_obj' => array('appgini' => 'TEXT '),
-			'ref_o_gameplay' => array('appgini' => 'TEXT '),
-			'creer_par' => array('appgini' => 'VARCHAR(40) '),
-			'rattache_a_dos2j' => array('appgini' => 'INT unsigned ')
+			'description_obj' => array('appgini' => 'TEXT null '),
+			'ref_o_gameplay' => array('appgini' => 'TEXT null '),
+			'creer_par' => array('appgini' => 'VARCHAR(40) null '),
+			'rattache_a_dos2j' => array('appgini' => 'INT unsigned null ')
 		),
 		'moyens' => array(   
 			'id_moyen' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
 			'titremoy' => array('appgini' => 'TEXT not null '),
-			'description_moy' => array('appgini' => 'TEXT '),
-			'ref_o_gameplay' => array('appgini' => 'TEXT '),
-			'creer_par' => array('appgini' => 'VARCHAR(40) '),
-			'rattache_a_dos2j' => array('appgini' => 'INT unsigned ')
+			'description_moy' => array('appgini' => 'TEXT null '),
+			'ref_o_gameplay' => array('appgini' => 'TEXT null '),
+			'creer_par' => array('appgini' => 'VARCHAR(40) null '),
+			'rattache_a_dos2j' => array('appgini' => 'INT unsigned null ')
 		),
 		'Objets' => array(   
 			'id_objet' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
 			'nom_objet' => array('appgini' => 'TEXT not null '),
-			'illustration' => array('appgini' => 'VARCHAR(40) '),
-			'typologie' => array('appgini' => 'VARCHAR(12) '),
-			'Aquoisertil' => array('appgini' => 'TEXT '),
-			'Contient' => array('appgini' => 'INT unsigned '),
-			'creer_par' => array('appgini' => 'VARCHAR(40) '),
-			'rattache_a_dos2j' => array('appgini' => 'INT unsigned '),
-			'rattache_a_seq' => array('appgini' => 'INT unsigned ')
+			'illustration' => array('appgini' => 'VARCHAR(40) null '),
+			'typologie' => array('appgini' => 'VARCHAR(12) null '),
+			'Aquoisertil' => array('appgini' => 'TEXT null '),
+			'Contient' => array('appgini' => 'INT unsigned null '),
+			'creer_par' => array('appgini' => 'VARCHAR(40) null '),
+			'rattache_a_dos2j' => array('appgini' => 'INT unsigned null '),
+			'rattache_a_seq' => array('appgini' => 'INT unsigned null ')
 		),
 		'personnages' => array(   
 			'id_perso' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
 			'nom' => array('appgini' => 'TEXT not null '),
-			'type' => array('appgini' => 'TEXT '),
-			'illustration' => array('appgini' => 'VARCHAR(40) '),
-			'description' => array('appgini' => 'TEXT '),
-			'quepossedetil' => array('appgini' => 'INT unsigned '),
-			'apparait_quand' => array('appgini' => 'TEXT '),
-			'disparait_quand' => array('appgini' => 'TEXT '),
-			'creer_par' => array('appgini' => 'VARCHAR(40) '),
-			'rattache_a_dos2j' => array('appgini' => 'INT unsigned '),
-			'rattache_a_seq' => array('appgini' => 'INT unsigned ')
+			'type' => array('appgini' => 'TEXT null '),
+			'illustration' => array('appgini' => 'VARCHAR(40) null '),
+			'description' => array('appgini' => 'TEXT null '),
+			'quepossedetil' => array('appgini' => 'INT unsigned null '),
+			'apparait_quand' => array('appgini' => 'TEXT null '),
+			'disparait_quand' => array('appgini' => 'TEXT null '),
+			'creer_par' => array('appgini' => 'VARCHAR(40) null '),
+			'rattache_a_dos2j' => array('appgini' => 'INT unsigned null '),
+			'rattache_a_seq' => array('appgini' => 'INT unsigned null ')
 		),
 		'lieu_et_scene' => array(   
 			'id_lets' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
 			'nom_du_lieu' => array('appgini' => 'TEXT not null '),
-			'illustration' => array('appgini' => 'VARCHAR(40) '),
-			'description' => array('appgini' => 'TEXT '),
-			'difficulte_nivo' => array('appgini' => 'VARCHAR(40) '),
-			'condition_entree' => array('appgini' => 'TEXT '),
-			'condition_sortie' => array('appgini' => 'TEXT '),
-			'objet_present' => array('appgini' => 'INT unsigned '),
-			'persos_present' => array('appgini' => 'INT unsigned '),
-			'creer_par' => array('appgini' => 'VARCHAR(40) '),
-			'rattache_a_dos2j' => array('appgini' => 'INT unsigned '),
-			'rattache_a_seq' => array('appgini' => 'INT unsigned ')
+			'illustration' => array('appgini' => 'VARCHAR(40) null '),
+			'description' => array('appgini' => 'TEXT null '),
+			'difficulte_nivo' => array('appgini' => 'VARCHAR(40) null '),
+			'condition_entree' => array('appgini' => 'TEXT null '),
+			'condition_sortie' => array('appgini' => 'TEXT null '),
+			'objet_present' => array('appgini' => 'INT unsigned null '),
+			'persos_present' => array('appgini' => 'INT unsigned null '),
+			'creer_par' => array('appgini' => 'VARCHAR(40) null '),
+			'rattache_a_dos2j' => array('appgini' => 'INT unsigned null '),
+			'rattache_a_seq' => array('appgini' => 'INT unsigned null ')
 		),
 		'ref_badges' => array(   
 			'id_badge' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
 			'titre' => array('appgini' => 'VARCHAR(40) not null '),
-			'description' => array('appgini' => 'TEXT '),
-			'domaine' => array('appgini' => 'VARCHAR(40) '),
-			'score_min' => array('appgini' => 'DECIMAL(10,2) '),
-			'score_max' => array('appgini' => 'VARCHAR(40) '),
-			'icone_badge' => array('appgini' => 'VARCHAR(40) ')
+			'description' => array('appgini' => 'TEXT null '),
+			'domaine' => array('appgini' => 'VARCHAR(40) null '),
+			'score_min' => array('appgini' => 'DECIMAL(10,2) null '),
+			'score_max' => array('appgini' => 'VARCHAR(40) null '),
+			'icone_badge' => array('appgini' => 'VARCHAR(40) null ')
 		),
 		'ref_sequences' => array(   
 			'id_seqref' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
 			'titre' => array('appgini' => 'VARCHAR(40) not null '),
-			'description' => array('appgini' => 'TEXT '),
-			'typologie' => array('appgini' => 'VARCHAR(40) '),
-			'num_ord' => array('appgini' => 'VARCHAR(40) ')
+			'description' => array('appgini' => 'TEXT null '),
+			'typologie' => array('appgini' => 'VARCHAR(40) null '),
+			'num_ord' => array('appgini' => 'VARCHAR(40) null ')
 		),
 		'ref_mission' => array(   
 			'id_misref' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
 			'titre' => array('appgini' => 'VARCHAR(40) not null '),
-			'description' => array('appgini' => 'TEXT ')
+			'description' => array('appgini' => 'TEXT null ')
 		),
 		'boiteaid' => array(   
 			'id' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
-			'titre' => array('appgini' => 'VARCHAR(40) '),
-			'commentaire' => array('appgini' => 'TEXT '),
-			'Capteur' => array('appgini' => 'VARCHAR(40) ')
+			'titre' => array('appgini' => 'VARCHAR(40) null '),
+			'commentaire' => array('appgini' => 'TEXT null '),
+			'Capteur' => array('appgini' => 'VARCHAR(40) null ')
 		),
 		'ref_capteur' => array(   
 			'id' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
-			'nom' => array('appgini' => 'VARCHAR(40) '),
-			'fonction' => array('appgini' => 'TEXT '),
-			'machine' => array('appgini' => 'VARCHAR(40) '),
-			'reference' => array('appgini' => 'TEXT '),
-			'fichier' => array('appgini' => 'VARCHAR(40) ')
+			'nom' => array('appgini' => 'VARCHAR(40) null '),
+			'fonction' => array('appgini' => 'TEXT null '),
+			'machine' => array('appgini' => 'VARCHAR(40) null '),
+			'reference' => array('appgini' => 'TEXT null '),
+			'fichier' => array('appgini' => 'VARCHAR(40) null ')
 		)
 	);
 
 	$table_captions = getTableList();
 
 	/* function for preparing field definition for comparison */
-	function prepare_def($def){
-		$def = trim($def);
+	function prepare_def($def) {
 		$def = strtolower($def);
 
+		/* ignore 'null' */
+		$def = preg_replace('/\s+not\s+null\s*/', '%%NOT_NULL%%', $def);
+		$def = preg_replace('/\s+null\s*/', ' ', $def);
+		$def = str_replace('%%NOT_NULL%%', ' not null ', $def);
+
 		/* ignore length for int data types */
-		$def = preg_replace('/int\w*\([0-9]+\)/', 'int', $def);
+		$def = preg_replace('/int\s*\([0-9]+\)/', 'int', $def);
 
 		/* make sure there is always a space before mysql words */
 		$def = preg_replace('/(\S)(unsigned|not null|binary|zerofill|auto_increment|default)/', '$1 $2', $def);
@@ -157,33 +165,79 @@
 		$def = str_ireplace('unsigned zerofill', 'zerofill', $def);
 
 		/* ignore zero-padding for date data types */
-		$def = preg_replace("/date\s*default\s*'([0-9]{4})-0?([1-9])-0?([1-9])'/i", "date default '$1-$2-$3'", $def);
+		$def = preg_replace("/date\s*default\s*'([0-9]{4})-0?([1-9])-0?([1-9])'/", "date default '$1-$2-$3'", $def);
 
-		return $def;
+		return trim($def);
 	}
 
-	/* process requested fixes */
-	$fix_table = (isset($_GET['t']) ? $_GET['t'] : false);
-	$fix_field = (isset($_GET['f']) ? $_GET['f'] : false);
+	/**
+	 *  @brief creates/fixes given field according to given schema
+	 *  @return integer: 0 = error, 1 = field updated, 2 = field created
+	 */
+	function fix_field($fix_table, $fix_field, $schema, &$qry) {
+		if(!isset($schema[$fix_table][$fix_field])) return 0;
 
-	if($fix_table && $fix_field && isset($schema[$fix_table][$fix_field])){
+		$def = $schema[$fix_table][$fix_field];
 		$field_added = $field_updated = false;
+		$eo['silentErrors'] = true;
 
 		// field exists?
 		$res = sql("show columns from `{$fix_table}` like '{$fix_field}'", $eo);
 		if($row = db_fetch_assoc($res)){
 			// modify field
-			$qry = "alter table `{$fix_table}` modify `{$fix_field}` {$schema[$fix_table][$fix_field]['appgini']}";
+			$qry = "alter table `{$fix_table}` modify `{$fix_field}` {$def['appgini']}";
 			sql($qry, $eo);
-			$field_updated = true;
-		}else{
-			// create field
-			$qry = "alter table `{$fix_table}` add column `{$fix_field}` {$schema[$fix_table][$fix_field]['appgini']}";
-			sql($qry, $eo);
-			$field_added = true;
+
+			// remove unique from db if necessary
+			if($row['Key'] == 'UNI' && !stripos($def['appgini'], ' unique')){
+				// retrieve unique index name
+				$res_unique = sql("show index from `{$fix_table}` where Column_name='{$fix_field}' and Non_unique=0", $eo);
+				if($row_unique = db_fetch_assoc($res_unique)){
+					$qry_unique = "drop index `{$row_unique['Key_name']}` on `{$fix_table}`";
+					sql($qry_unique, $eo);
+					$qry .= ";\n{$qry_unique}";
+				}
+			}
+
+			return 1;
 		}
+
+		// missing field is defined as PK and table has another PK field?
+		$current_pk = getPKFieldName($fix_table);
+		if(stripos($def['appgini'], 'primary key') !== false && $current_pk !== false) {
+			// if current PK is not another AppGini-defined field, then rename it.
+			if(!isset($schema[$fix_table][$current_pk])) {
+				// no need to include 'primary key' in definition since it's already a PK field
+				$redef = str_ireplace(' primary key', '', $def['appgini']);
+				$qry = "alter table `{$fix_table}` change `{$current_pk}` `{$fix_field}` {$redef}";
+				sql($qry, $eo);
+				return 1;
+			}
+
+			// current PK field is another AppGini-defined field
+			// this happens if table had a PK field in AppGini then it was unset as PK
+			// and another field was created and set as PK
+			// in that case, drop PK index from current PK
+			// and also remove auto_increment from it if defined
+			// then proceed to creating the missing PK field
+			$pk_def = str_ireplace(' auto_increment', '', $schema[$fix_table][$current_pk]);
+			sql("alter table `{$fix_table}` modify `{$current_pk}` {$pk_def}", $eo);
+		}
+
+		// create field
+		$qry = "alter table `{$fix_table}` add column `{$fix_field}` {$def['appgini']}";
+		sql($qry, $eo);
+		return 2;
 	}
 
+	/* process requested fixes */
+	$fix_table = (isset($_GET['t']) ? $_GET['t'] : false);
+	$fix_field = (isset($_GET['f']) ? $_GET['f'] : false);
+	$fix_all = (isset($_GET['all']) ? true : false);
+
+	if($fix_field && $fix_table) $fix_status = fix_field($fix_table, $fix_field, $schema, $qry);
+
+	/* retrieve actual db schema */
 	foreach($table_captions as $tn => $tc){
 		$eo['silentErrors'] = true;
 		$res = sql("show columns from `{$tn}`", $eo);
@@ -207,17 +261,30 @@
 			}
 		}
 	}
+
+	/* handle fix_all request */
+	if($fix_all){
+		foreach($schema as $tn => $fields){
+			foreach($fields as $fn => $fd){
+				if(prepare_def($fd['appgini']) == prepare_def($fd['db'])) continue;
+				fix_field($tn, $fn, $schema, $qry);
+			}
+		}
+
+		redirect('admin/pageRebuildFields.php');
+		exit;
+	}
 ?>
 
-<?php if($field_added || $field_updated){ ?>
+<?php if($fix_status == 1 || $fix_status == 2){ ?>
 	<div class="alert alert-info alert-dismissable">
 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		<i class="glyphicon glyphicon-info-sign"></i>
 		<?php 
-			$originalValues =  array ('<ACTION>','<FIELD>' , '<TABLE>' , '<QUERY>' );
-			$action = ($field_added ? 'create' : 'update');
-			$replaceValues = array ( $action , $fix_field , $fix_table , $qry );
-			echo  str_replace ( $originalValues , $replaceValues , $Translation['create or update table']  );
+			$originalValues = array('<ACTION>', '<FIELD>', '<TABLE>', '<QUERY>');
+			$action = ($fix_status == 2 ? 'create' : 'update');
+			$replaceValues = array($action, $fix_field, $fix_table, $qry);
+			echo str_replace($originalValues, $replaceValues, $Translation['create or update table']);
 		?>
 	</div>
 <?php } ?>
@@ -237,7 +304,7 @@
 		<th><?php echo $Translation['field'] ; ?></th>
 		<th><?php echo $Translation['AppGini definition'] ; ?></th>
 		<th><?php echo $Translation['database definition'] ; ?></th>
-		<th></th>
+		<th id="fix_all"></th>
 	</tr></thead>
 
 	<tbody>
@@ -271,39 +338,45 @@
 </style>
 
 <script>
-	jQuery(function(){
-		jQuery('[data-toggle="tooltip"]').tooltip();
+	$j(function(){
+		$j('[data-toggle="tooltip"]').tooltip();
 
-		jQuery('#show_deviations_only').click(function(){
-			jQuery(this).addClass('hidden');
-			jQuery('#show_all_fields').removeClass('hidden');
-			jQuery('.field_ok').hide();
+		$j('#show_deviations_only').click(function(){
+			$j(this).addClass('hidden');
+			$j('#show_all_fields').removeClass('hidden');
+			$j('.field_ok').hide();
 		});
 
-		jQuery('#show_all_fields').click(function(){
-			jQuery(this).addClass('hidden');
-			jQuery('#show_deviations_only').removeClass('hidden');
-			jQuery('.field_ok').show();
+		$j('#show_all_fields').click(function(){
+			$j(this).addClass('hidden');
+			$j('#show_deviations_only').removeClass('hidden');
+			$j('.field_ok').show();
 		});
 
-		jQuery('.btn_update').click(function(){
+		$j('.btn_update, #fix_all').click(function(){
 			return confirm("<?php echo $Translation['field update warning'] ; ?>");
 		});
 
-		var count_updates = jQuery('.btn_update').length;
-		var count_creates = jQuery('.btn_create').length;
+		var count_updates = $j('.btn_update').length;
+		var count_creates = $j('.btn_create').length;
 		if(!count_creates && !count_updates){
-			jQuery('.summary').addClass('alert-success').html("<?php echo $Translation['no deviations found'] ; ?>");
+			$j('.summary').addClass('alert-success').html("<?php echo $Translation['no deviations found'] ; ?>");
 		}else{
 			var fieldsCount = "<?php echo $Translation['error fields']; ?>";
 			fieldsCount = fieldsCount.replace(/<CREATENUM>/, count_creates ).replace(/<UPDATENUM>/, count_updates);
 
 
-			jQuery('.summary')
+			$j('.summary')
 				.addClass('alert-warning')
 				.html(
-					fieldsCount
+					fieldsCount + 
+					'<br><br>' + 
+					'<a href="pageBackupRestore.php" class="alert-link">' +
+						'<b><?php echo addslashes($Translation['backup before fix']); ?></b>' +
+					'</a>'
 				);
+
+			$j('<a href="pageRebuildFields.php?all=1" class="btn btn-danger btn-block"><i class="glyphicon glyphicon-cog"></i> <?php echo addslashes($Translation['fix all']); ?></a>').appendTo('#fix_all');
 		}
 	});
 </script>

@@ -1,12 +1,16 @@
+<?php
+	$rdata = array_map('to_utf8', array_map('nl2br', array_map('html_attr_tags_ok', $rdata)));
+	$jdata = array_map('to_utf8', array_map('nl2br', array_map('html_attr_tags_ok', $jdata)));
+?>
 <script>
 	$j(function(){
 		var tn = 'personnages';
 
 		/* data for selected record, or defaults if none is selected */
 		var data = {
-			quepossedetil: { id: '<?php echo $rdata['quepossedetil']; ?>', value: '<?php echo $rdata['quepossedetil']; ?>', text: '<?php echo $jdata['quepossedetil']; ?>' },
-			rattache_a_dos2j: { id: '<?php echo $rdata['rattache_a_dos2j']; ?>', value: '<?php echo $rdata['rattache_a_dos2j']; ?>', text: '<?php echo $jdata['rattache_a_dos2j']; ?>' },
-			rattache_a_seq: { id: '<?php echo $rdata['rattache_a_seq']; ?>', value: '<?php echo $rdata['rattache_a_seq']; ?>', text: '<?php echo $jdata['rattache_a_seq']; ?>' }
+			quepossedetil: <?php echo json_encode(array('id' => $rdata['quepossedetil'], 'value' => $rdata['quepossedetil'], 'text' => $jdata['quepossedetil'])); ?>,
+			rattache_a_dos2j: <?php echo json_encode(array('id' => $rdata['rattache_a_dos2j'], 'value' => $rdata['rattache_a_dos2j'], 'text' => $jdata['rattache_a_dos2j'])); ?>,
+			rattache_a_seq: <?php echo json_encode(array('id' => $rdata['rattache_a_seq'], 'value' => $rdata['rattache_a_seq'], 'text' => $jdata['rattache_a_seq'])); ?>
 		};
 
 		/* initialize or continue using AppGini.cache for the current table */

@@ -5,6 +5,12 @@
 	include("{$currDir}/incHeader.php");
 	$mailsPerBatch = 5;
 
+	?>
+	<style>
+		#sendmail-debug{ height: 20em; overflow: auto; }
+	</style>
+	<?php
+
 	$queue = $_REQUEST['queue'];
 	$simulate = (isset($_REQUEST['simulate']) ? true : false);
 	if(!preg_match('/^[a-f0-9]{32}$/i', $queue)){
@@ -21,11 +27,7 @@
 	include($queueFile);
 
 	// escape new lines in message and remove them in subject
-	$escaped_mailMessage = str_replace(
-		array("\n", "\r"),
-		array('\n', '\r'),
-		strip_tags($mailMessage)
-	);
+	$escaped_mailMessage = strip_tags($mailMessage);
 	$escaped_mailSubject = str_replace(
 		array("\n", "\r"),
 		'',
@@ -40,32 +42,34 @@
 	$fLog = @fopen("{$currDir}/{$queue}.log", "a");
 	// send a batch of up to $mailsPerBatch messages
 	$i = 0;
+	echo '<pre id="sendmail-debug" style="display: none;">';
 	foreach($to as $email){
 		if(!isEmail($email)) continue;
 		$i++;
 
 		$mail_status = (rand(1, 10) % 3 ? true : false);
 		if(!$simulate){
-			$mail_status = @mail(
-				$email, 
-				$escaped_mailSubject, 
-				$escaped_mailMessage, 
-				"From: {$adminConfig['senderName']} <{$adminConfig['senderEmail']}>" 
-			);
+			$mail_status = sendmail(array(
+				'to' => $email, 
+				'subject' => $escaped_mailSubject, 
+				'message' => nl2br($escaped_mailMessage),
+				'debug' => ($_SESSION["debug_{$queue}"] ? 2 : 0)
+			));
 		}
 
 		$mail_log = str_replace("<EMAIL>", $email, $Translation['sending message ok']);
-		if(!$mail_status){
-			$mail_log = str_replace("<EMAIL>",$email, $Translation['sending message failed']);
-       }
+		if($mail_status !== true){
+			$mail_log = str_replace("<EMAIL>",$email, $Translation['sending message failed'] . " -- {$mail_status}");
+		}
 		@fwrite($fLog, @date("d.m.Y H:i:s") . $mail_log . "\n");
 
 		if($i >= $mailsPerBatch) break;
 	}
+	echo '</pre>';
 	@fclose($fLog);
 
 	if($i < $mailsPerBatch){
-		// no more emails in queue
+		// no more emails in queue, so delete queue and unset showDebug
 		@unlink($queueFile);
 
 		$mail_log = @file_get_contents("{$currDir}/{$queue}.log");
@@ -76,8 +80,20 @@
 		<?php echo  $Translation['close page'] ; ?>
 		<br><br>
 		<pre style="text-align: left;"><?php echo "<b>{$Translation['mail log']}</b>\n{$mail_log}"; ?></pre>
+
+		<?php if($_SESSION["debug_{$queue}"]){ ?>
+			<div id="sendmail-debug-show"></div>
+			<script>
+				$j(function(){
+					$j('#sendmail-debug').appendTo('#sendmail-debug-show');
+					$j('#sendmail-debug').css({ display : 'block'});
+				})
+			</script>
+		<?php } ?>
+
 		<?php
 		@unlink("{$currDir}/{$queue}.log");
+		unset($_SESSION["debug_{$queue}"]);
 		include("{$currDir}/incFooter.php");
 	}
 
